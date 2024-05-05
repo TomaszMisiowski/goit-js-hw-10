@@ -1,18 +1,15 @@
 import './css/styles.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import debounce from 'lodash.debounce';
-import { fetchCountries } from './fetchCountries'; 
+import { fetchCountries } from './fetchCountries';
 
-const DEBOUNCE_DELAY = 300; 
+const DEBOUNCE_DELAY = 300;
 
 const refs = {
-  searchEl : document.querySelector('#search-box'),
-  countryInfo : document.querySelector('.country-info'),
-  countryList : document.querySelector('.country-list'),
+  searchEl: document.querySelector('#search-box'),
+  countryInfo: document.querySelector('.country-info'),
+  countryList: document.querySelector('.country-list'),
 };
-
-// const country_list = document.querySelector('.country-list');
-
 
 const clearMarkup = ref => (ref.innerHTML = '');
 
@@ -25,7 +22,7 @@ const inputHandler = e => {
     return;
   }
 
-  fetchCountries(textInput) 
+  fetchCountries(textInput)
     .then(data => {
       console.log(data);
       if (data.length > 10) {
@@ -64,7 +61,6 @@ const createListMarkup = data => {
         `<li><img src="${flags.png}" alt="${name.official}" width="60" height="40">${name.official}</li>`
     )
     .join('');
-    
 };
 
 const createInfoMarkup = data => {
